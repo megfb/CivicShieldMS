@@ -25,11 +25,7 @@ builder.Services.AddScoped<IIncidentRepository, IncidentRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 builder.Services.AddSharedEventBus(new[] { typeof(Program).Assembly }, builder.Environment);
-var env = builder.Environment.EnvironmentName;
-Console.WriteLine($"### ENVIRONMENT: {env} ###");
 
-var rabbitHost = builder.Configuration["RabbitMqSettings:Host"];
-Console.WriteLine($"### RABBITMQ HOST: {rabbitHost} ###");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

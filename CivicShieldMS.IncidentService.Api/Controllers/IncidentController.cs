@@ -14,6 +14,7 @@ namespace CivicShieldMS.IncidentService.Api.Controllers
         [HttpPost("CreateIncident")]
         public async Task<IActionResult> CreateIncident(CreateIncidentCommand incident)
         {
+            Console.WriteLine("cicd başarılı");
             return Ok(await _mediator.Send(incident));
         }
         [HttpDelete("DeletIncident")]

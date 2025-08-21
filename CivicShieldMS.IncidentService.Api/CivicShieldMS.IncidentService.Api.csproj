@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>37efd76a-bb09-4a41-9cfb-4a8a76f2248a</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="masstransit" Version="8.5.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+	<PackageReference Include="MediatR" Version="13.0.0" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.7" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.7">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CivicShieldMs.Shared.Common\CivicShieldMS.Shared.Common.csproj" />
+    <ProjectReference Include="..\CivicShieldMs.Shared.EventBus\CivicShieldMS.Shared.EventBus.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="IntegrationEvents\" />
+  </ItemGroup>
+
+</Project>

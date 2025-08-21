@@ -1,0 +1,408 @@
+# services:
+
+#   rabbitmq:
+#     image: rabbitmq:3-management
+#     container_name: rabbitmq
+#     ports:
+#       - "5672:5672"
+#       - "15672:15672"
+#     environment:
+#       RABBITMQ_DEFAULT_USER: guest
+#       RABBITMQ_DEFAULT_PASS: guest
+#     networks:
+#       - civicshield-net
+
+#   postgres_alert:
+#     image: postgres:16
+#     container_name: postgres_alert
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: postgrespw
+#       POSTGRES_DB: AlertDb
+#     ports:
+#       - "5433:5432"
+#     networks:
+#       - civicshield-net
+
+#   postgres_auth:
+#     image: postgres:16
+#     container_name: postgres_auth
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: postgrespw
+#       POSTGRES_DB: AuthDb
+#     ports:
+#       - "5434:5432"
+#     networks:
+#       - civicshield-net
+
+#   postgres_coordination:
+#     image: postgres:16
+#     container_name: postgres_coordination
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: postgrespw
+#       POSTGRES_DB: CoordinationDb
+#     ports:
+#       - "5435:5432"
+#     networks:
+#       - civicshield-net
+
+#   postgres_incident:
+#     image: postgres:16
+#     container_name: postgres_incident
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: postgrespw
+#       POSTGRES_DB: IncidentDb
+#     ports:
+#       - "5436:5432"
+#     networks:
+#       - civicshield-net
+
+#   postgres_notification:
+#     image: postgres:16
+#     container_name: postgres_notification
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: postgrespw
+#       POSTGRES_DB: NotificationDb
+#     ports:
+#       - "5437:5432"
+#     networks:
+#       - civicshield-net
+
+#   postgres_user:
+#     image: postgres:16
+#     container_name: postgres_user
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: postgrespw
+#       POSTGRES_DB: UserDb
+#     ports:
+#       - "5438:5432"
+#     networks:
+#       - civicshield-net
+
+#   # API Servisleri
+#   alertservice:
+#     build:
+#       context: .
+#       dockerfile: CivicShieldMS.AlertService.Api/Dockerfile
+#     container_name: alertservice
+#     environment:
+#       ASPNETCORE_URLS: "http://+:80"
+#       ASPNETCORE_ENVIRONMENT: Development
+#       ConnectionStrings__AlertDb: "Host=postgres_alert;Port=5432;Database=AlertDb;Username=postgres;Password=postgrespw"
+#       RabbitMQ__Host: "rabbitmq"
+#       RabbitMQ__Port: 5672
+#       RabbitMQ__Username: guest
+#       RabbitMQ__Password: guest
+#     depends_on:
+#       - postgres_alert
+#       - rabbitmq
+#     networks:
+#       - civicshield-net
+#     ports:
+#       - "5001:80"
+
+#   authservice:
+#     build:
+#       context: .
+#       dockerfile: CivicShieldMS.AuthService.Api/Dockerfile
+#     container_name: authservice
+#     environment:
+#       ASPNETCORE_URLS: "http://+:80"
+#       ASPNETCORE_ENVIRONMENT: Development
+#       ConnectionStrings__AuthDb: "Host=postgres_auth;Port=5432;Database=AuthDb;Username=postgres;Password=postgrespw"
+#       RabbitMQ__Host: "rabbitmq"
+#       RabbitMQ__Port: 5672
+#       RabbitMQ__Username: guest
+#       RabbitMQ__Password: guest
+#     depends_on:
+#       - postgres_auth
+#       - rabbitmq
+#     networks:
+#       - civicshield-net
+#     ports:
+#       - "5002:80"
+
+#   coordinationservice:
+#     build:
+#       context: .
+#       dockerfile: CivicShieldMS.CoordinationService.Api/Dockerfile
+#     container_name: coordinationservice
+#     environment:
+#       ASPNETCORE_URLS: "http://+:80"
+#       ASPNETCORE_ENVIRONMENT: Development
+#       ConnectionStrings__CoordinationDb: "Host=postgres_coordination;Port=5432;Database=CoordinationDb;Username=postgres;Password=postgrespw"
+#       RabbitMQ__Host: "rabbitmq"
+#       RabbitMQ__Port: 5672
+#       RabbitMQ__Username: guest
+#       RabbitMQ__Password: guest
+#     depends_on:
+#       - postgres_coordination
+#       - rabbitmq
+#     networks:
+#       - civicshield-net
+#     ports:
+#       - "5003:80"
+
+#   incidentservice:
+#     build:
+#       context: .
+#       dockerfile: CivicShieldMS.IncidentService.Api/Dockerfile
+#     container_name: incidentservice
+#     environment:
+#       ASPNETCORE_URLS: "http://+:80"
+#       ASPNETCORE_ENVIRONMENT: Development
+#       ConnectionStrings__IncidentDb: "Host=postgres_incident;Port=5432;Database=IncidentDb;Username=postgres;Password=postgrespw"
+#       RabbitMQ__Host: "rabbitmq"
+#       RabbitMQ__Port: 5672
+#       RabbitMQ__Username: guest
+#       RabbitMQ__Password: guest
+#     depends_on:
+#       - postgres_incident
+#       - rabbitmq
+#     networks:
+#       - civicshield-net
+#     ports:
+#       - "5004:80"
+
+#   notificationservice:
+#     build:
+#       context: .
+#       dockerfile: CivicShieldMS.NotificationService.Api/Dockerfile
+#     container_name: notificationservice
+#     environment:
+#       ASPNETCORE_URLS: "http://+:80"
+#       ASPNETCORE_ENVIRONMENT: Development
+#       ConnectionStrings__NotificationDb: "Host=postgres_notification;Port=5432;Database=NotificationDb;Username=postgres;Password=postgrespw"
+#       RabbitMQ__Host: "rabbitmq"
+#       RabbitMQ__Port: 5672
+#       RabbitMQ__Username: guest
+#       RabbitMQ__Password: guest
+#     depends_on:
+#       - postgres_notification
+#       - rabbitmq
+#     networks:
+#       - civicshield-net
+#     ports:
+#       - "5005:80"
+
+#   userservice:
+#     build:
+#       context: .
+#       dockerfile: CivicShieldMS.UserService.Api/Dockerfile
+#     container_name: userservice
+#     environment:
+#       ASPNETCORE_URLS: "http://+:80"
+#       ASPNETCORE_ENVIRONMENT: Development
+#       ConnectionStrings__UserDb: "Host=postgres_user;Port=5432;Database=UserDb;Username=postgres;Password=postgrespw"
+#       RabbitMQ__Host: "rabbitmq"
+#       RabbitMQ__Port: 5672
+#       RabbitMQ__Username: guest
+#       RabbitMQ__Password: guest
+#     depends_on:
+#       - postgres_user
+#       - rabbitmq
+#     networks:
+#       - civicshield-net
+#     ports:
+#       - "5006:80"
+
+# networks:
+#   civicshield-net:
+#     driver: bridge
+services:
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - civicshield-net
+
+  postgres_alert:
+    image: postgres:16
+    container_name: postgres_alert
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespw
+      POSTGRES_DB: AlertDb
+    ports:
+      - "5433:5432"
+    networks:
+      - civicshield-net
+
+  postgres_auth:
+    image: postgres:16
+    container_name: postgres_auth
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespw
+      POSTGRES_DB: AuthDb
+    ports:
+      - "5434:5432"
+    networks:
+      - civicshield-net
+
+  postgres_coordination:
+    image: postgres:16
+    container_name: postgres_coordination
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespw
+      POSTGRES_DB: CoordinationDb
+    ports:
+      - "5435:5432"
+    networks:
+      - civicshield-net
+
+  postgres_incident:
+    image: postgres:16
+    container_name: postgres_incident
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespw
+      POSTGRES_DB: IncidentDb
+    ports:
+      - "5436:5432"
+    networks:
+      - civicshield-net
+
+  postgres_notification:
+    image: postgres:16
+    container_name: postgres_notification
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespw
+      POSTGRES_DB: NotificationDb
+    ports:
+      - "5437:5432"
+    networks:
+      - civicshield-net
+
+  postgres_user:
+    image: postgres:16
+    container_name: postgres_user
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespw
+      POSTGRES_DB: UserDb
+    ports:
+      - "5438:5432"
+    networks:
+      - civicshield-net
+
+  # API Servisleri
+  alertservice:
+    build:
+      context: .
+      dockerfile: CivicShieldMS.AlertService.Api/Dockerfile
+    container_name: alertservice
+    environment:
+      ASPNETCORE_URLS: "http://+:80"
+      ASPNETCORE_ENVIRONMENT: Docker
+      ConnectionStrings__AlertDb: "Host=postgres_alert;Port=5432;Database=AlertDb;Username=postgres;Password=postgrespw"
+    depends_on:
+      - postgres_alert
+      - rabbitmq
+    networks:
+      - civicshield-net
+    ports:
+      - "5001:80"
+
+  authservice:
+    build:
+      context: .
+      dockerfile: CivicShieldMS.AuthService.Api/Dockerfile
+    container_name: authservice
+    environment:
+      ASPNETCORE_URLS: "http://+:80"
+      ASPNETCORE_ENVIRONMENT: Docker
+      ConnectionStrings__AuthDb: "Host=postgres_auth;Port=5432;Database=AuthDb;Username=postgres;Password=postgrespw"
+    depends_on:
+      - postgres_auth
+      - rabbitmq
+    networks:
+      - civicshield-net
+    ports:
+      - "5002:80"
+
+  coordinationservice:
+    build:
+      context: .
+      dockerfile: CivicShieldMS.CoordinationService.Api/Dockerfile
+    container_name: coordinationservice
+    environment:
+      ASPNETCORE_URLS: "http://+:80"
+      ASPNETCORE_ENVIRONMENT: Docker
+      ConnectionStrings__CoordinationDb: "Host=postgres_coordination;Port=5432;Database=CoordinationDb;Username=postgres;Password=postgrespw"
+    depends_on:
+      - postgres_coordination
+      - rabbitmq
+    networks:
+      - civicshield-net
+    ports:
+      - "5003:80"
+
+  incidentservice:
+    build:
+      context: .
+      dockerfile: CivicShieldMS.IncidentService.Api/Dockerfile
+    container_name: incidentservice
+    environment:
+      ASPNETCORE_URLS: "http://+:80"
+      ASPNETCORE_ENVIRONMENT: Docker
+      ConnectionStrings__IncidentDb: "Host=postgres_incident;Port=5432;Database=IncidentDb;Username=postgres;Password=postgrespw"
+    depends_on:
+      - postgres_incident
+      - rabbitmq
+    networks:
+      - civicshield-net
+    ports:
+      - "5004:80"
+
+  notificationservice:
+    build:
+      context: .
+      dockerfile: CivicShieldMS.NotificationService.Api/Dockerfile
+    container_name: notificationservice
+    environment:
+      ASPNETCORE_URLS: "http://+:80"
+      ASPNETCORE_ENVIRONMENT: Docker
+      ConnectionStrings__NotificationDb: "Host=postgres_notification;Port=5432;Database=NotificationDb;Username=postgres;Password=postgrespw"
+    depends_on:
+      - postgres_notification
+      - rabbitmq
+    networks:
+      - civicshield-net
+    ports:
+      - "5005:80"
+
+  userservice:
+    build:
+      context: .
+      dockerfile: CivicShieldMS.UserService.Api/Dockerfile
+    container_name: userservice
+    environment:
+      ASPNETCORE_URLS: "http://+:80"
+      ASPNETCORE_ENVIRONMENT: Docker
+      ConnectionStrings__UserDb: "Host=postgres_user;Port=5432;Database=UserDb;Username=postgres;Password=postgrespw"
+    depends_on:
+      - postgres_user
+      - rabbitmq
+    networks:
+      - civicshield-net
+    ports:
+      - "5006:80"
+
+networks:
+  civicshield-net:
+    driver: bridge

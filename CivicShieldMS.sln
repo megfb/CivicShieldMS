@@ -1,0 +1,84 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CivicShieldMS.Shared.Common", "CivicShieldMs.Shared.Common\CivicShieldMS.Shared.Common.csproj", "{02A05958-D9DB-46AD-8389-3C02779F2DAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CivicShieldMS.Shared.EventBus", "CivicShieldMs.Shared.EventBus\CivicShieldMS.Shared.EventBus.csproj", "{8D9F0A67-AD98-4D10-AC48-1F72E2D032D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{904B831A-D50C-47CD-9FA4-EEE8983B25AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CivicShieldMS.AlertService.Api", "CivicShieldMS.AlertService.Api\CivicShieldMS.AlertService.Api.csproj", "{13C4379B-69C8-4283-90FB-B56E8C46059F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CivicShieldMS.AuthService.Api", "CivicShieldMS.AuthService.Api\CivicShieldMS.AuthService.Api.csproj", "{EEB5BFE2-CEED-4C4F-9C55-887D6AF84F07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CivicShieldMS.CoordinationService.Api", "CivicShieldMS.CoordinationService.Api\CivicShieldMS.CoordinationService.Api.csproj", "{9010116C-3A6C-4497-B971-0F71F3A8754E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CivicShieldMS.IncidentService.Api", "CivicShieldMS.IncidentService.Api\CivicShieldMS.IncidentService.Api.csproj", "{71BDE243-DE45-41F7-B419-761DAB8C2270}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CivicShieldMS.NotificationService.Api", "CivicShieldMS.NotificationService.Api\CivicShieldMS.NotificationService.Api.csproj", "{3FBBAAF0-16BC-4040-86E4-49DBF2ACF266}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CivicShieldMS.UserService.Api", "CivicShieldMS.UserService.Api\CivicShieldMS.UserService.Api.csproj", "{F94BB576-1A49-468F-8636-15FBCAFD443B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02A05958-D9DB-46AD-8389-3C02779F2DAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02A05958-D9DB-46AD-8389-3C02779F2DAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02A05958-D9DB-46AD-8389-3C02779F2DAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02A05958-D9DB-46AD-8389-3C02779F2DAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D9F0A67-AD98-4D10-AC48-1F72E2D032D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D9F0A67-AD98-4D10-AC48-1F72E2D032D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D9F0A67-AD98-4D10-AC48-1F72E2D032D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D9F0A67-AD98-4D10-AC48-1F72E2D032D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13C4379B-69C8-4283-90FB-B56E8C46059F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13C4379B-69C8-4283-90FB-B56E8C46059F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13C4379B-69C8-4283-90FB-B56E8C46059F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13C4379B-69C8-4283-90FB-B56E8C46059F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEB5BFE2-CEED-4C4F-9C55-887D6AF84F07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEB5BFE2-CEED-4C4F-9C55-887D6AF84F07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEB5BFE2-CEED-4C4F-9C55-887D6AF84F07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEB5BFE2-CEED-4C4F-9C55-887D6AF84F07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9010116C-3A6C-4497-B971-0F71F3A8754E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9010116C-3A6C-4497-B971-0F71F3A8754E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9010116C-3A6C-4497-B971-0F71F3A8754E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9010116C-3A6C-4497-B971-0F71F3A8754E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71BDE243-DE45-41F7-B419-761DAB8C2270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71BDE243-DE45-41F7-B419-761DAB8C2270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71BDE243-DE45-41F7-B419-761DAB8C2270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71BDE243-DE45-41F7-B419-761DAB8C2270}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FBBAAF0-16BC-4040-86E4-49DBF2ACF266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FBBAAF0-16BC-4040-86E4-49DBF2ACF266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FBBAAF0-16BC-4040-86E4-49DBF2ACF266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FBBAAF0-16BC-4040-86E4-49DBF2ACF266}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F94BB576-1A49-468F-8636-15FBCAFD443B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F94BB576-1A49-468F-8636-15FBCAFD443B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F94BB576-1A49-468F-8636-15FBCAFD443B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F94BB576-1A49-468F-8636-15FBCAFD443B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{02A05958-D9DB-46AD-8389-3C02779F2DAB} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{8D9F0A67-AD98-4D10-AC48-1F72E2D032D8} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{13C4379B-69C8-4283-90FB-B56E8C46059F} = {904B831A-D50C-47CD-9FA4-EEE8983B25AD}
+		{EEB5BFE2-CEED-4C4F-9C55-887D6AF84F07} = {904B831A-D50C-47CD-9FA4-EEE8983B25AD}
+		{9010116C-3A6C-4497-B971-0F71F3A8754E} = {904B831A-D50C-47CD-9FA4-EEE8983B25AD}
+		{71BDE243-DE45-41F7-B419-761DAB8C2270} = {904B831A-D50C-47CD-9FA4-EEE8983B25AD}
+		{3FBBAAF0-16BC-4040-86E4-49DBF2ACF266} = {904B831A-D50C-47CD-9FA4-EEE8983B25AD}
+		{F94BB576-1A49-468F-8636-15FBCAFD443B} = {904B831A-D50C-47CD-9FA4-EEE8983B25AD}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F2BB968-EF38-46BB-93FC-B6DD6510A8BC}
+	EndGlobalSection
+EndGlobal

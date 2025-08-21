@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "civicshieldms.alertservice.api": "StartDebugging",
+        "civicshieldms.authservice.api": "StartDebugging",
+        "civicshieldms.coordinationservice.api": "StartDebugging",
+        "civicshieldms.incidentservice.api": "StartDebugging",
+        "civicshieldms.notificationservice.api": "StartDebugging",
+        "civicshieldms.userservice.api": "StartDebugging"
+      }
+    }
+  }
+}

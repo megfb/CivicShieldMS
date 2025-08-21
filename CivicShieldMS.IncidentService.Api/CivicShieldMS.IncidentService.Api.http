@@ -1,0 +1,6 @@
+@CivicShieldMS.IncidentService.Api_HostAddress = http://localhost:5261
+
+GET {{CivicShieldMS.IncidentService.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

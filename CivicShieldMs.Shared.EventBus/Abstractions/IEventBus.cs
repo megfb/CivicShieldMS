@@ -2,7 +2,8 @@
 {
     public interface IEventBus
     {
-        Task PublishAsync<TEvent>(TEvent @event) where TEvent : IntegrationEvent;
+        Task PublishAsync<TEvent>(TEvent @event, string exchangeName, string routingKey);
+        //Task PublishAsync<TEvent>(TEvent @event) where TEvent : IntegrationEvent;
         //void Subscribe<T, TH>(string exchange, string queueName, string routingKey)
         //    where T : IntegrationEvent
         //    where TH : IIntegrationEventHandler<T>;

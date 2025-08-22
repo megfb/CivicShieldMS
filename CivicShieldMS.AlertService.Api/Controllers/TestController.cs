@@ -14,12 +14,17 @@ namespace CivicShieldMS.AlertService.Api.Controllers
         [HttpPost("test")]
         public async Task<IActionResult> Test()
         {
-            var test = new TestIntegrationEvent()
+            //var test = new TestIntegrationEvent()
+            //{
+            //    Name = "Test Event",
+            //};
+
+            //await _eventBus.PublishAsync(test);
+
+            await _eventBus.PublishAsync(new TestIntegrationEvent
             {
                 Name = "Test Event",
-            };
-
-            await _eventBus.PublishAsync(test);
+            }, exchangeName: "a-service-event", routingKey: "test-integration-event");
 
             return Ok("Gönderildi");
         }

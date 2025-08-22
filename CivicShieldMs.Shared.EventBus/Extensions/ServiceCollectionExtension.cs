@@ -15,7 +15,7 @@ namespace CivicShieldMS.Shared.EventBus.Extensions
 
             services.AddMassTransit(config =>
             {
-                config.Configure(environment, consumerAssemblies);
+                config.ConfigureEventBus(environment, consumerAssemblies);
             });
 
             return services;

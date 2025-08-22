@@ -6,7 +6,8 @@ namespace CivicShieldMS.Shared.EventBus.EventBus
 {
     public static class MassTransitConfigurator
     {
-        public static void Configure(this IBusRegistrationConfigurator configurator, IHostEnvironment environment, Assembly[] assemblies, Action<IRabbitMqBusFactoryConfigurator>? customConfig = null)
+
+        public static void ConfigureEventBus(this IBusRegistrationConfigurator configurator, IHostEnvironment environment, Assembly[] assemblies, Action<IRabbitMqBusFactoryConfigurator, IBusRegistrationContext>? customConfig = null)
         {
             var formatter = new KebabCaseEndpointNameFormatter(environment.IsDevelopment() ? "local-" : "docker-");
             configurator.SetEndpointNameFormatter(formatter);
@@ -24,8 +25,11 @@ namespace CivicShieldMS.Shared.EventBus.EventBus
                     h.Password("guest");
                 });
 
+                cfg.PublishTopology.BrokerTopologyOptions = PublishBrokerTopologyOptions.MaintainHierarchy;
+
+                customConfig?.Invoke(cfg, context);
+
                 cfg.ConfigureEndpoints(context);
-                customConfig?.Invoke(cfg);
             });
         }
     }

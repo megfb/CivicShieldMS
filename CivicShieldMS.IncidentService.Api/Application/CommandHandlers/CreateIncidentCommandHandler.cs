@@ -36,17 +36,17 @@ namespace CivicShieldMS.IncidentService.Api.Application.CommandHandlers
                 await _unitOfWork.SaveChangesAsync(cancellationToken);
                 _logger.LogInformation("Incident created with ID: {IncidentId}", incident.Id);
 
-                await _eventBus.PublishAsync(new CreateIncidentIntegrationEvent
-                {
-                    Id = incident.Id,
-                    Title = incident.Title,
-                    Description = incident.Description,
-                    Category = incident.Category,
-                    Latitude = incident.Latitude,
-                    Longitude = incident.Longitude,
-                    ReportedBy = incident.ReportedBy,
-                    ReportedAt = incident.ReportedAt
-                });
+                //await _eventBus.PublishAsync(new CreateIncidentIntegrationEvent
+                //{
+                //    Id = incident.Id,
+                //    Title = incident.Title,
+                //    Description = incident.Description,
+                //    Category = incident.Category,
+                //    Latitude = incident.Latitude,
+                //    Longitude = incident.Longitude,
+                //    ReportedBy = incident.ReportedBy,
+                //    ReportedAt = incident.ReportedAt
+                //});
                 _logger.LogInformation("Incident integration event published for Incident ID: {IncidentId}", incident.Id);
                 return new Result(true, "Incident created successfully");
             }
